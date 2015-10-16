@@ -126,6 +126,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       chrome.tabs.update(sender.tab.id, {url: decodeURI(openNode.url)});
     });
   }
+  else if (action === 'newwindow') {
+    chrome.windows.create();
+  }
+  else if (action === 'newincognitowindow') {
+    chrome.windows.create({ incognito: true });
+  }
   else {
     sendResponse({});
   }
